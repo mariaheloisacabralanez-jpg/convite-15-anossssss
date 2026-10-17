@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#24102f">
+<title>Convite | Maria Heloisa — 15 anos</title>
+<style>
+:root{--plum:#24102f;--deep:#13091b;--violet:#6f4382;--gold:#d9bd82;--cream:#fff5e6;--muted:#d8c8dd}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at top,#583665 0%,#24102f 42%,#100815 100%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+.candles{position:fixed;inset:0;pointer-events:none;opacity:.7;background:radial-gradient(ellipse at 8% 78%,#e9a64c33 0 2px,transparent 80px),radial-gradient(ellipse at 91% 24%,#e9a64c33 0 2px,transparent 90px)}
+main{width:min(100%,540px);text-align:center;position:relative}
+.eyebrow{letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-size:.72rem}
+h1{font-size:clamp(2rem,8vw,3.4rem);font-weight:normal;margin:.5rem 0;color:var(--cream)}
+.subtitle{color:var(--muted);font-style:italic;margin:0 0 26px}
+.envelope-wrap{perspective:1000px;margin:0 auto 20px;width:min(100%,360px);height:245px;position:relative}
+.envelope{position:absolute;inset:25px 0 0;background:linear-gradient(145deg,#7c548a,#4b2a5b);border:1px solid var(--gold);box-shadow:0 20px 50px #0008;overflow:visible}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(32deg,transparent 49.5%,#b99acb 50%,transparent 50.5%),linear-gradient(-32deg,transparent 49.5%,#a884b8 50%,transparent 50.5%);opacity:.65}
+.flap{position:absolute;left:0;right:0;top:0;height:62%;transform-origin:top;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(135deg,#9873a4,#62406f);border-bottom:1px solid var(--gold);z-index:4;transition:transform 1s ease,opacity .7s ease}
+.seal{position:absolute;z-index:5;left:50%;top:48%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#a36d9c,#542047 70%);border:2px solid #d5b77d;color:#f5dca2;font-size:1.6rem;box-shadow:0 3px 12px #0008;transition:opacity .4s}
+.letter{position:absolute;z-index:2;left:7%;right:7%;top:10px;min-height:205px;padding:20px 16px;background:linear-gradient(#fff8ed,#f1e2cc);color:#392342;border:1px solid #d7bd91;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;transform:translateY(25px);transition:opacity .8s .3s,transform .8s .3s}
+.letter .small{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#7c5a7e}
+.letter h2{font-size:1.8rem;font-weight:normal;margin:8px 0}
+.letter p{margin:4px 0;line-height:1.45}
+.open .flap{transform:rotateX(180deg);opacity:.2}
+.open .seal{opacity:0;pointer-events:none}
+.open .letter{opacity:1;transform:translateY(-15px)}
+button{font:inherit;cursor:pointer;border:1px solid var(--gold);background:linear-gradient(135deg,#765084,#42234f);color:var(--cream);padding:13px 22px;letter-spacing:.04em;box-shadow:0 6px 20px #0004;transition:transform .2s,background .2s}
+button:hover{transform:translateY(-2px);background:#815a8d}
+.details{margin:22px auto 0;padding:18px 12px;border-top:1px solid #d9bd824d;border-bottom:1px solid #d9bd824d;line-height:1.8;color:var(--muted)}
+.details strong{color:var(--gold);font-weight:normal}
+.footer{margin-top:20px;font-size:.8rem;color:#c8b2d0;font-style:italic}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="candles" aria-hidden="true"></div>
+<main>
+  <div class="eyebrow">Uma noite digna de ser lembrada</div>
+  <h1>Você está convidado</h1>
+  <p class="subtitle">Uma celebração encantada e um pequeno mistério...</p>
+  <div class="envelope-wrap" id="envelopeWrap">
+    <div class="envelope">
+      <div class="letter">
+        <div class="small">Com alegria, convidamos você para celebrar</div>
+        <h2>Maria Heloisa</h2>
+        <p>seus tão esperados <strong>15 anos</strong></p>
+        <p>5 de novembro · às 19h30</p>
+        <p>Avenida Pinheiro</p>
+        <p style="font-style:italic;margin-top:8px">Sua presença tornará esta noite ainda mais especial.</p>
+      </div>
+      <div class="flap"></div>
+      <div class="seal" aria-label="Selo de cera">M</div>
+    </div>
+  </div>
+  <button id="openBtn" type="button" aria-expanded="false">Abrir convite ✦</button>
+  <div class="details">
+    <div><strong>Data:</strong> 5 de novembro</div>
+    <div><strong>Horário:</strong> 19h30</div>
+    <div><strong>Local:</strong> Avenida Pinheiro</div>
+  </div>
+  <p class="footer">Traje: venha como se fosse parte de um baile secreto da alta sociedade.</p>
+</main>
+<script>
+const wrap=document.getElementById('envelopeWrap');
+const btn=document.getElementById('openBtn');
+btn.addEventListener('click',()=>{
+  const opened=wrap.classList.toggle('open');
+  btn.setAttribute('aria-expanded',String(opened));
+  btn.textContent=opened?'Fechar convite ✦':'Abrir convite ✦';
+});
+</script>
+</body>
+</html>
